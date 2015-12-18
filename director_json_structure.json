@@ -1,0 +1,18 @@
+{
+	"url": "",
+	"vms": [
+		{
+			"deploymentName": "",
+			"vms": [
+				{
+					"name": "",
+					"state": "",
+					"ip": "",
+					"cpuUser": "",
+					"ram": "",
+					"ephemeralDiskUsage": ""
+				}
+			]
+		}
+	]
+}

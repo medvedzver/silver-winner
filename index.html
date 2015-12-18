@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<style>
+		border {
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div id="directors"></div>
+	<script>
+		var directors = {}; //map of director url to DOM elements
+
+		var Director = function(url) {
+			this.url = url ? url : "";
+			this.vms = [];
+		};
+
+		Director.prototype.render = function() {
+			this.createDirector();
+			this.createDeployments();
+			this.createVms();
+
+			for (url in directors) {
+				document.body.appendChild(directors[url]);
+			}
+		};
+
+		Director.prototype.createDirector = function() {
+			var div = document.createElement(div),
+				name = this.url;
+			div.classList.add("container-fluid");
+			div.classList.add("director");
+			div.classList.add("border");
+			div.textContent = name;
+			directors[name] = div;
+		};
+
+		Director.prototype.createDeployments = function() {
+			for (var i=0; i < this.vms.length; i++) {
+				this.createDeployment(this.vms[i]);
+			}
+		};
+
+		Director.prototype.createDeployment = function(deployment) {
+
+		};
+
+		Director.prototype.createVms = function() {
+
+		};
+
+		$.ready($.get("https://s3-us-west-1.amazonaws.com/bosh-vis-data/vms-vitals-parsed", function(vmsData) {
+			var director = new Director("ci-ipsec.security.cf-app.com"),
+				deploymentCount = -1,
+				vms = director.vms,
+				reDeployment = new RegExp('deployment', 'i');
+				reVm = new RegExp('\\|');
+
+			vmsData.split("\n").forEach(function parseString(line) {
+				if (line.search(reDeployment) !== -1) {
+					vms[++deploymentCount] = {
+						"deploymentName": line.split("`")[1].split("'")[0],
+						"vms": []
+					};
+				} else if (line.search(reVm) !== -1) {
+					var vmData = line.split("|");
+
+					vms[deploymentCount].vms.push({
+						"name": vmData[1].trim(),
+						"state": vmData[2].trim(),
+						"ip": vmData[4].trim(),
+						"cpuUser": vmData[6].trim(),
+						"ram": vmData[9].trim(),
+						"ephemeralDiskUsage": vmData[12].trim()
+					});
+				}
+			});
+
+			console.log(director);
+			director.render();
+		}));
+	</script>	
+</body>

@@ -1,0 +1,404 @@
+{
+  "url": "ci-ipsec.security.cf-app.com",
+  "vms": [
+    {
+      "deploymentName": "security-cf-strongswan",
+      "vms": [
+        {
+          "name": " api_worker_z1/0                    ",
+          "state": " running ",
+          "ip": " 10.10.4.68 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 10% (370.3M) ",
+          "ephemeralDiskUsage": " 7%         "
+        },
+        {
+          "name": " api_worker_z2/0                    ",
+          "state": " running ",
+          "ip": " 10.10.5.66 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 10% (373.9M) ",
+          "ephemeralDiskUsage": " 7%         "
+        },
+        {
+          "name": " api_z1/0                           ",
+          "state": " running ",
+          "ip": " 10.10.4.66 ",
+          "cpuUser": " 0.5% ",
+          "ram": " 31% (1.1G)   ",
+          "ephemeralDiskUsage": " 4%         "
+        },
+        {
+          "name": " api_z2/0                           ",
+          "state": " running ",
+          "ip": " 10.10.5.65 ",
+          "cpuUser": " 0.5% ",
+          "ram": " 32% (1.2G)   ",
+          "ephemeralDiskUsage": " 4%         "
+        },
+        {
+          "name": " clock_global/0                     ",
+          "state": " running ",
+          "ip": " 10.10.4.67 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 6% (231.4M)  ",
+          "ephemeralDiskUsage": " 6%         "
+        },
+        {
+          "name": " consul_z1/0                        ",
+          "state": " running ",
+          "ip": " 10.10.4.37 ",
+          "cpuUser": " 0.2% ",
+          "ram": " 3% (98.5M)   ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " consul_z1/1                        ",
+          "state": " running ",
+          "ip": " 10.10.4.38 ",
+          "cpuUser": " 0.4% ",
+          "ram": " 2% (93.9M)   ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " consul_z2/0                        ",
+          "state": " running ",
+          "ip": " 10.10.5.37 ",
+          "cpuUser": " 0.4% ",
+          "ram": " 3% (104.7M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " doppler_z1/0                       ",
+          "state": " running ",
+          "ip": " 10.10.4.71 ",
+          "cpuUser": " 0.4% ",
+          "ram": " 3% (95.9M)   ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " doppler_z2/0                       ",
+          "state": " running ",
+          "ip": " 10.10.5.69 ",
+          "cpuUser": " 0.4% ",
+          "ram": " 3% (96.5M)   ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " etcd_z1/0                          ",
+          "state": " running ",
+          "ip": " 10.10.4.20 ",
+          "cpuUser": " 0.4% ",
+          "ram": " 5% (179.7M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " etcd_z1/1                          ",
+          "state": " running ",
+          "ip": " 10.10.4.35 ",
+          "cpuUser": " 0.2% ",
+          "ram": " 4% (152.8M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " etcd_z2/0                          ",
+          "state": " running ",
+          "ip": " 10.10.5.19 ",
+          "cpuUser": " 0.3% ",
+          "ram": " 4% (151.8M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " hm9000_z1/0                        ",
+          "state": " running ",
+          "ip": " 10.10.4.69 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 5% (171.3M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " hm9000_z2/0                        ",
+          "state": " running ",
+          "ip": " 10.10.5.67 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 4% (161.2M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " loggregator_trafficcontroller_z1/0 ",
+          "state": " running ",
+          "ip": " 10.10.4.72 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 3% (110.8M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " loggregator_trafficcontroller_z2/0 ",
+          "state": " running ",
+          "ip": " 10.10.5.70 ",
+          "cpuUser": " 0.2% ",
+          "ram": " 3% (112.6M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " nats_z1/0                          ",
+          "state": " running ",
+          "ip": " 10.10.4.11 ",
+          "cpuUser": " 0.2% ",
+          "ram": " 3% (119.3M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " nats_z2/0                          ",
+          "state": " running ",
+          "ip": " 10.10.5.11 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 3% (120.7M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " postgres_z1/0                      ",
+          "state": " running ",
+          "ip": " 10.10.4.42 ",
+          "cpuUser": " 0.2% ",
+          "ram": " 4% (153.8M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " router_z1/0                        ",
+          "state": " running ",
+          "ip": " 10.10.4.15 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 3% (117.3M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " router_z2/0                        ",
+          "state": " running ",
+          "ip": " 10.10.5.15 ",
+          "cpuUser": " 0.2% ",
+          "ram": " 3% (116.2M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " runner_z1/0                        ",
+          "state": " running ",
+          "ip": " 10.10.4.70 ",
+          "cpuUser": " 0.6% ",
+          "ram": " 10% (772.8M) ",
+          "ephemeralDiskUsage": " 4%         "
+        },
+        {
+          "name": " runner_z2/0                        ",
+          "state": " running ",
+          "ip": " 10.10.5.68 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 7% (531.6M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " stats_z1/0                         ",
+          "state": " running ",
+          "ip": " 10.10.4.64 ",
+          "cpuUser": " 0.3% ",
+          "ram": " 3% (131.4M)  ",
+          "ephemeralDiskUsage": " 3%         "
+        },
+        {
+          "name": " uaa_z1/0                           ",
+          "state": " running ",
+          "ip": " 10.10.4.65 ",
+          "cpuUser": " 0.3% ",
+          "ram": " 12% (469.6M) ",
+          "ephemeralDiskUsage": " 10%        "
+        },
+        {
+          "name": " uaa_z2/0                           ",
+          "state": " running ",
+          "ip": " 10.10.5.64 ",
+          "cpuUser": " 0.6% ",
+          "ram": " 13% (473.6M) ",
+          "ephemeralDiskUsage": " 10%        "
+        }
+      ]
+    },
+    {
+      "deploymentName": "security-cf-strongswan-diego",
+      "vms": [
+        {
+          "name": " access_z1/0        ",
+          "state": " running ",
+          "ip": " 10.10.7.11 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 1% (172.0M)  ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " access_z2/0        ",
+          "state": " running ",
+          "ip": " 10.10.8.11 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 1% (172.6M)  ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " brain_z1/0         ",
+          "state": " running ",
+          "ip": " 10.10.7.65 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 1% (182.9M)  ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " brain_z2/0         ",
+          "state": " running ",
+          "ip": " 10.10.8.65 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 1% (177.3M)  ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " cc_bridge_z1/0     ",
+          "state": " running ",
+          "ip": " 10.10.7.69 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 2% (161.5M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " cc_bridge_z2/0     ",
+          "state": " running ",
+          "ip": " 10.10.8.69 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 2% (170.1M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " cell_z1/0          ",
+          "state": " running ",
+          "ip": " 10.10.7.66 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 2% (475.9M)  ",
+          "ephemeralDiskUsage": " 2%         "
+        },
+        {
+          "name": " cell_z1/1          ",
+          "state": " running ",
+          "ip": " 10.10.7.67 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 2% (485.8M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " cell_z1/2          ",
+          "state": " running ",
+          "ip": " 10.10.7.68 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 1% (442.9M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " cell_z2/0          ",
+          "state": " running ",
+          "ip": " 10.10.8.66 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 2% (472.8M)  ",
+          "ephemeralDiskUsage": " 2%         "
+        },
+        {
+          "name": " cell_z2/1          ",
+          "state": " running ",
+          "ip": " 10.10.8.67 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 2% (472.5M)  ",
+          "ephemeralDiskUsage": " 2%         "
+        },
+        {
+          "name": " cell_z2/2          ",
+          "state": " running ",
+          "ip": " 10.10.8.68 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 2% (472.5M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " database_z1/0      ",
+          "state": " running ",
+          "ip": " 10.10.7.64 ",
+          "cpuUser": " 0.6% ",
+          "ram": " 3% (191.5M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " database_z2/0      ",
+          "state": " running ",
+          "ip": " 10.10.8.64 ",
+          "cpuUser": " 0.3% ",
+          "ram": " 2% (176.0M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " database_z3/0      ",
+          "state": " running ",
+          "ip": " 10.10.9.64 ",
+          "cpuUser": " 0.8% ",
+          "ram": " 3% (187.9M)  ",
+          "ephemeralDiskUsage": " 1%         "
+        },
+        {
+          "name": " route_emitter_z1/0 ",
+          "state": " running ",
+          "ip": " 10.10.7.70 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 3% (96.9M)   ",
+          "ephemeralDiskUsage": " 4%         "
+        },
+        {
+          "name": " route_emitter_z2/0 ",
+          "state": " running ",
+          "ip": " 10.10.8.70 ",
+          "cpuUser": " 0.1% ",
+          "ram": " 2% (91.0M)   ",
+          "ephemeralDiskUsage": " 4%         "
+        }
+      ]
+    },
+    {
+      "deploymentName": "strongswan",
+      "vms": [
+        {
+          "name": " ipsec/0    ",
+          "state": " running ",
+          "ip": " 10.10.10.30 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 7% (72.0M)   ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " ipsec/1    ",
+          "state": " running ",
+          "ip": " 10.10.10.31 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 6% (63.7M)   ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " no_ipsec/0 ",
+          "state": " running ",
+          "ip": " 10.10.10.32 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 6% (60.8M)   ",
+          "ephemeralDiskUsage": " 0%         "
+        },
+        {
+          "name": " no_ipsec/1 ",
+          "state": " running ",
+          "ip": " 10.10.10.33 ",
+          "cpuUser": " 0.0% ",
+          "ram": " 6% (60.9M)   ",
+          "ephemeralDiskUsage": " 0%         "
+        }
+      ]
+    }
+  ]
+}
