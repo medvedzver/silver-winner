@@ -5,8 +5,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<style>
-		border {
-			border: 1px solid black;
+		.stupid-borders {
+			border: 1px dashed darkgrey;
 		}
 	</style>
 </head>
@@ -21,37 +21,55 @@
 		};
 
 		Director.prototype.render = function() {
-			this.createDirector();
-			this.createDeployments();
-			this.createVms();
-
-			for (url in directors) {
-				document.body.appendChild(directors[url]);
-			}
+			this.createDirector(document.getElementById("directors"));
 		};
 
-		Director.prototype.createDirector = function() {
-			var div = document.createElement(div),
+		Director.prototype.createDirector = function(parentEl) {
+			var div = document.createElement("div"),
 				name = this.url;
-			div.classList.add("container-fluid");
+
 			div.classList.add("director");
-			div.classList.add("border");
+			div.classList.add("container-fluid");
+			div.classList.add("stupid-borders");
 			div.textContent = name;
 			directors[name] = div;
+			this.createDeployments(div, this.vms);
+			parentEl.appendChild(div);
 		};
 
-		Director.prototype.createDeployments = function() {
-			for (var i=0; i < this.vms.length; i++) {
-				this.createDeployment(this.vms[i]);
+		Director.prototype.createDeployments = function(parentEl, deployments) {
+			for (var i = 0; i < deployments.length; i++) {
+				this.createDeployment(parentEl, deployments[i]);
 			}
 		};
 
-		Director.prototype.createDeployment = function(deployment) {
+		Director.prototype.createDeployment = function(parentEl, deployment) {
+			var div = document.createElement("div"),
+				name = deployment.deploymentName;
 
+			div.classList.add("deployment");
+			div.classList.add("container-fluid");
+			div.classList.add("stupid-borders");
+			div.textContent = name;
+			this.createVms(div, deployment.vms);
+			parentEl.appendChild(div);
 		};
 
-		Director.prototype.createVms = function() {
+		Director.prototype.createVms = function(parentEl, vms) {
+			for (var i = 0; i < vms.length; i++) {
+				this.createVm(parentEl, vms[i]);
+			}
+		};
 
+		Director.prototype.createVm = function(parentEl, vm) {
+			var div = document.createElement("div"),
+				name = vm.name + " | " + vm.ip;
+
+			div.classList.add("vm");
+			div.classList.add("container-fluid");
+			div.classList.add("stupid-borders");
+			div.textContent = name;
+			parentEl.appendChild(div);
 		};
 
 		$.ready($.get("https://s3-us-west-1.amazonaws.com/bosh-vis-data/vms-vitals-parsed", function(vmsData) {
