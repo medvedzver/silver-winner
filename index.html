@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<style>
-		.stupid-borders {
+		.borders {
 			border: 1px dashed darkgrey;
 		}
 	</style>
@@ -26,13 +26,18 @@
 
 		Director.prototype.createDirector = function(parentEl) {
 			var div = document.createElement("div"),
+				title = document.createElement("h3"),
 				name = this.url;
 
 			div.classList.add("director");
 			div.classList.add("container-fluid");
-			div.classList.add("stupid-borders");
-			div.textContent = name;
+			div.classList.add("borders");			
 			directors[name] = div;
+
+			title.classList.add("text-center");
+			title.textContent = "Director: " + name;
+			div.appendChild(title);
+
 			this.createDeployments(div, this.vms);
 			parentEl.appendChild(div);
 		};
@@ -45,12 +50,16 @@
 
 		Director.prototype.createDeployment = function(parentEl, deployment) {
 			var div = document.createElement("div"),
+				title = document.createElement("h4"),
 				name = deployment.deploymentName;
 
 			div.classList.add("deployment");
 			div.classList.add("container-fluid");
-			div.classList.add("stupid-borders");
-			div.textContent = name;
+			div.classList.add("borders");
+
+			title.textContent = "Deployment: " + name;
+			div.appendChild(title);
+
 			this.createVms(div, deployment.vms);
 			parentEl.appendChild(div);
 		};
@@ -67,7 +76,20 @@
 
 			div.classList.add("vm");
 			div.classList.add("container-fluid");
-			div.classList.add("stupid-borders");
+			div.classList.add("borders");
+
+			switch (vm.state) {
+				case "running":
+					div.classList.add("bg-success");
+					break;
+				case "failing":
+					div.classList.add("bg-danger");
+					break;
+				case "unresponsive":
+					div.classList.add("bg-muted");
+					break;
+			}
+
 			div.textContent = name;
 			parentEl.appendChild(div);
 		};
