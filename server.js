@@ -3,30 +3,9 @@ var exec = require('child_process').exec;
 var execSync =  require('child_process').execSync;
 var StringDecoder = require('string_decoder').StringDecoder;
 var decoder = new StringDecoder('utf8');
-
+var fs = require('fs');
 
 const PORT=8080;
-
-function execute(command, callback){
-    exec(command, function(error, stdout, stderr){ callback(stdout); });
-}
-
-function handleRequest(request, response){
-    var vms = get_vms()
-    var target = get_target()
-    var json = {
-        "url": target,
-        "vms": vms
-    }
-
-    // response.writeHead(200, {"Content-Type": "application/json"});
-    // var json = JSON.stringify({
-    //     anObject: otherObject,
-    //     anArray: otherArray,
-    //     another: "item"
-    // });
-    response.end(JSON.stringify(json));
-}
 
 var server = http.createServer(handleRequest);
 
@@ -34,7 +13,33 @@ server.listen(PORT, function(){
     console.log("Server listening on: http://localhost:%s", PORT);
 });
 
-return
+function execute(command, callback){
+    exec(command, function(error, stdout, stderr){ callback(stdout); });
+}
+
+function handleRequest(request, response){
+    console.log(request.url)
+    if (request.url == "/api") {
+        var vms = get_vms()
+        var target = get_target()
+        var json = {
+            "url": target,
+            "vms": vms
+        }
+        response.end(JSON.stringify(json));
+    } else {
+        fs.readFile("." + request.url, function(error, content) {
+            if (error) {
+                console.log(error)
+                response.writeHead(404);
+                response.end();
+            } else {
+                response.writeHead(200, { 'Content-Type': 'text/html' });
+                response.end(content, 'utf-8');
+            }
+        });
+    }
+}
 
 function get_target() {
     var target_buff = execSync("bosh target")
