@@ -19,7 +19,8 @@ function execute(command, callback){
 
 function handleRequest(request, response){
     console.log(request.url)
-    if (request.url == "/api") {
+    var url = request.url
+    if (url == "/api") {
         var vms = get_vms()
         var target = get_target()
         var json = {
@@ -28,7 +29,8 @@ function handleRequest(request, response){
         }
         response.end(JSON.stringify(json));
     } else {
-        fs.readFile("." + request.url, function(error, content) {
+        if (url == "/") url = "/index.html"
+        fs.readFile("." + url, function(error, content) {
             if (error) {
                 console.log(error)
                 response.writeHead(404);
