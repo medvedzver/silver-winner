@@ -118,34 +118,17 @@
 			parentEl.appendChild(vmEl);
 		};
 
-		$.ready($.get("https://s3-us-west-1.amazonaws.com/bosh-vis-data/vms-vitals-parsed", function(vmsData) {
-			var director = new Director("ci-ipsec.security.cf-app.com"),
-				deploymentCount = -1,
-				vms = director.vms,
-				reDeployment = new RegExp('deployment', 'i');
-				reVm = new RegExp('\\|');
-
-			vmsData.split("\n").forEach(function parseString(line) {
-				if (line.search(reDeployment) !== -1) {
-					vms[++deploymentCount] = {
-						"deploymentName": line.split("`")[1].split("'")[0],
-						"vms": []
-					};
-				} else if (line.search(reVm) !== -1) {
-					var vmData = line.split("|");
-
-					vms[deploymentCount].vms.push({
-						"name": vmData[1].trim(),
-						"state": vmData[2].trim(),
-						"ip": vmData[4].trim(),
-						"cpuUser": vmData[6].trim(),
-						"ram": vmData[9].trim(),
-						"ephemeralDiskUsage": vmData[12].trim()
-					});
-				}
+		$(document).ready(function() {
+			console.log("getting api")
+			//start_spin
+			$.get("/api", function(vmsData) {
+				//stop_spin
+				var vmsObj = JSON.parse(vmsData)
+				console.log(vmsObj)
+				var director = new Director("ci-ipsec.security.cf-app.com")
+				director.vms = [vmsObj]
+				director.render()
 			});
-
-			director.render();
-		}));
+		});
 	</script>	
 </body>
